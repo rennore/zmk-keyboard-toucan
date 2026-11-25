@@ -27,67 +27,67 @@
     combos {
         compatible = "zmk,combos";
 
-        // Totem pos 6 7 8  →  Corne pos 7 8 9  (row 0, cols 1-3 of right side)
+        // Totem pos 6 7 8  →  pos 6 7 8  (row 0, cols 1-3 of right side)
 
         Meh1 {
             bindings = <&kp LS(LA(LC(NUMBER_1)))>;
-            key-positions = <7 8 9>;
+            key-positions = <6 7 8>;
         };
 
-        // Totem pos 16 17 18  →  Corne pos 19 20 21
+        // Totem pos 16 17 18  →  pos 16 17 18
 
         Meh2 {
             bindings = <&kp LS(LA(LC(NUMBER_2)))>;
-            key-positions = <19 20 21>;
+            key-positions = <16 17 18>;
         };
 
-        // Totem pos 28 29  →  Corne pos 32 33
+        // Totem pos 28 29  →  pos 27 28
 
         Enter {
             bindings = <&kp ENTER>;
-            key-positions = <32 33>;
-            timeout-ms = <30>;
-        };
-
-        // Totem pos 32 37  →  Corne pos 36 41
-
-        SysLayerLeft {
-            bindings = <&mo SYS>;
-            key-positions = <36 37>;
-        };
-
-        SysLayerRight {
-            bindings = <&mo SYS>;
-            key-positions = <40 41>;
-        };
-
-        // Totem pos 23 24  →  Corne pos 27 28
-
-        Tab {
-            bindings = <&kp TAB>;
             key-positions = <27 28>;
             timeout-ms = <30>;
         };
 
-        // Totem pos 36 7 6  →  Corne pos 40 8 7
+        // Totem pos 32 37  →  pos 30 31 (left), 34 35 (right)
+
+        SysLayerLeft {
+            bindings = <&mo SYS>;
+            key-positions = <30 31>;
+        };
+
+        SysLayerRight {
+            bindings = <&mo SYS>;
+            key-positions = <34 35>;
+        };
+
+        // Totem pos 23 24  →  pos 22 23
+
+        Tab {
+            bindings = <&kp TAB>;
+            key-positions = <22 23>;
+            timeout-ms = <30>;
+        };
+
+        // Totem pos 36 7 6  →  pos 34 7 6
 
         Hyper1 {
             bindings = <&kp LS(LA(LC(LG(NUMBER_1))))>;
-            key-positions = <40 8 7>;
+            key-positions = <34 7 6>;
         };
 
-        // Totem pos 36 16 17  →  Corne pos 40 19 20
+        // Totem pos 36 16 17  →  pos 34 16 17
 
         Hyper2 {
             bindings = <&kp LS(LA(LC(LG(NUMBER_2))))>;
-            key-positions = <40 19 20>;
+            key-positions = <34 16 17>;
         };
 
-        // Totem pos 36 28 27  →  Corne pos 40 32 31
+        // Totem pos 36 28 27  →  pos 34 27 26
 
         Hyper3 {
             bindings = <&kp LS(LA(LC(LG(NUMBER_3))))>;
-            key-positions = <40 32 31>;
+            key-positions = <34 27 26>;
         };
     };
 
@@ -160,65 +160,80 @@
         compatible = "zmk,keymap";
 
         // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-        // Corne 42-key layout — outer cols (leftmost & rightmost) are always &trans (unused)
-        // | --- | lt3 TAB | W | E | R | T |   | Y | U | I | O | lt3 P | --- |
-        // | --- | mt Meh A | mt Alt S | D | F | G |   | H | J | K | mt Alt L | mt Meh ' | --- |
-        // | --- | mt Ctrl Z | mt Sft X | C | V | B |   | N | M | , | . | mt Ctrl Q | --- |
-        //               | --- | mt_hold SFT ESC | mt GUI SPC |   | lt NAV ENT | lt SYM BSPC | --- |
+        // 36-key layout (5 columns + 3 thumb keys per side)
+        // | lt3 TAB | W | E | R | T |   | Y | U | I | O | lt3 P |
+        // | mt Meh A | mt Alt S | D | F | G |   | H | J | K | mt Alt L | mt Meh ' |
+        // | mt Ctrl Z | mt Sft X | C | V | B |   | N | M | , | . | mt Ctrl Q |
+        //       | --- | mt_hold SFT ESC | mt GUI SPC |   | lt NAV ENT | lt SYM BSPC | --- |
         // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
         base_layer {
             display-name = "BASE";
             bindings = <
-&trans  &lt FUN TAB  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &lt FUN P  &trans  &trans  &mt LS(LA(LEFT_CONTROL)) A  &mt LEFT_ALT S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &mt LEFT_ALT L  &mt LS(LA(LEFT_CONTROL)) SINGLE_QUOTE  &trans  &trans  &mt LEFT_CONTROL Z  &mt LEFT_SHIFT X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA  &mt RIGHT_SHIFT DOT  &mt LEFT_CONTROL Q  &trans  &trans  &mt_hold LEFT_SHIFT ESCAPE  &mt LEFT_GUI SPACE  &lt NAV ENTER  &lt_repeat SYM BACKSPACE  &trans
+&lt FUN TAB                 &kp W             &kp E    &kp R                       &kp T                 &kp Y          &kp U                    &kp I        &kp O                &lt FUN P
+&mt LS(LA(LEFT_CONTROL)) A  &mt LEFT_ALT S    &kp D    &kp F                       &kp G                 &kp H          &kp J                    &kp K        &mt LEFT_ALT L       &mt LS(LA(LEFT_CONTROL)) SINGLE_QUOTE
+&mt LEFT_CONTROL Z          &mt LEFT_SHIFT X  &kp C    &kp V                       &kp B                 &kp N          &kp M                    &kp COMMA    &mt RIGHT_SHIFT DOT  &mt LEFT_CONTROL Q
+                                              &trans   &mt_hold LEFT_SHIFT ESCAPE  &mt LEFT_GUI SPACE    &lt NAV ENTER  &lt_repeat SYM BACKSPACE  &trans
             >;
         };
 
-        // | --- | @ | < | > | \ | | |   | ` | ( | ) | ~ | BSPC | --- |
-        // | --- | ! | _ | - | = | & |   | # | { | } | / | ? | --- |
-        // | --- | * | + | [ | ] | % |   | ^ | : | ; | $ | ¥ | --- |
-        //               | --- | mt SFT BSPC | --- |   | mo SYS | KP0 | --- |
+        // | @ | < | > | \ | | |   | ` | ( | ) | ~ | BSPC |
+        // | ! | _ | - | = | & |   | # | { | } | / | ? |
+        // | * | + | [ | ] | % |   | ^ | : | ; | $ | ¥ |
+        //       | --- | mt SFT BSPC | --- |   | mo SYS | KP0 | --- |
 
         sym_layer {
             display-name = "SYM";
             bindings = <
-&trans  &kp AT  &kp LESS_THAN  &kp GREATER_THAN  &kp BACKSLASH  &kp PIPE  &kp GRAVE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp TILDE  &kp BACKSPACE  &trans  &trans  &kp EXCLAMATION  &kp UNDER  &kp MINUS  &kp EQUAL  &kp AMPS  &kp HASH  &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp SLASH  &kp QUESTION  &trans  &trans  &kp STAR  &kp PLUS  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp PERCENT  &kp CARET  &kp COLON  &kp SEMI  &kp DOLLAR  &kp INT_YEN  &trans  &trans  &mt LEFT_SHIFT BACKSPACE  &trans  &mo SYS  &kp KP_N0  &trans
+&kp AT           &kp LESS_THAN  &kp GREATER_THAN  &kp BACKSLASH             &kp PIPE       &kp GRAVE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp TILDE   &kp BACKSPACE
+&kp EXCLAMATION  &kp UNDER      &kp MINUS         &kp EQUAL                 &kp AMPS       &kp HASH   &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp SLASH   &kp QUESTION
+&kp STAR         &kp PLUS       &kp LEFT_BRACKET  &kp RIGHT_BRACKET         &kp PERCENT    &kp CARET  &kp COLON             &kp SEMI               &kp DOLLAR  &kp INT_YEN
+                                &trans            &mt LEFT_SHIFT BACKSPACE  &trans         &mo SYS    &kp KP_N0             &trans
             >;
         };
 
-        // | --- | 1 | 2 | 3 | 4 | 5 |   | 6 | 7 | 8 | 9 | 0 | --- |
-        // | --- | - | mt Alt HOME | mt Sft PgDn | PgUp | END |   | ← | ↓ | ↑ | → | BSPC | --- |
-        // | --- | Ctrl | --- | --- | --- | --- |   | ScrL | ScrD | ScrU | ScrR | - | --- |
-        //               | --- | mt SFT BSPC | mt GUI SPC |   | --- | --- | --- |
+        // | 1 | 2 | 3 | 4 | 5 |   | 6 | 7 | 8 | 9 | 0 |
+        // | --- | mt Alt HOME | mt Sft PgDn | PgUp | END |   | ← | ↓ | ↑ | → | --- |
+        // | Ctrl | --- | --- | --- | --- |   | ScrL | ScrD | ScrU | ScrR | - |
+        //       | --- | mt SFT BSPC | mt GUI SPC |   | --- | --- | --- |
 
         nav_layer {
             display-name = "NAV";
             bindings = <
-&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0  &trans  &trans  &trans  &mt LEFT_ALT HOME  &mt LEFT_SHIFT PAGE_DOWN  &kp PAGE_UP  &kp END  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans  &trans  &trans  &kp LEFT_CONTROL  &trans  &trans  &trans  &trans  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &kp MINUS  &trans  &trans  &mt LEFT_SHIFT BACKSPACE  &mt LEFT_GUI SPACE  &trans  &trans  &trans
+&kp NUMBER_1      &kp NUMBER_2       &kp NUMBER_3              &kp NUMBER_4              &kp NUMBER_5          &kp NUMBER_6    &kp NUMBER_7    &kp NUMBER_8  &kp NUMBER_9     &kp NUMBER_0
+&trans            &mt LEFT_ALT HOME  &mt LEFT_SHIFT PAGE_DOWN  &kp PAGE_UP               &kp END               &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans
+&kp LEFT_CONTROL  &trans             &trans                    &trans                    &trans                &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &kp MINUS
+                                     &trans                    &mt LEFT_SHIFT BACKSPACE  &mt LEFT_GUI SPACE    &trans          &trans          &trans
             >;
         };
 
-        // | --- | LockScr | CloseWin | mouse↑ | Screenshot | ReviveWin |   | --- | --- | --- | --- | Play/Pause | --- |
-        // | --- | --- | mouse← | mouse↓ | mouse→ | QuitApp |   | --- | Prev | Next | --- | --- | --- |
-        // | --- | --- | --- | --- | --- | --- |   | --- | Vol- | Vol+ | --- | --- | --- |
-        //               | MClick | LClick | RClick |   | --- | --- | --- |
+        // | LockScr | CloseWin | mouse↑ | Screenshot | ReviveWin |   | --- | --- | --- | --- | Play/Pause |
+        // | --- | mouse← | mouse↓ | mouse→ | QuitApp |   | --- | Prev | Next | --- | --- |
+        // | --- | --- | --- | --- | --- |   | --- | Vol- | Vol+ | --- | --- |
+        //       | MClick | LClick | RClick |   | --- | --- | --- |
 
         fun_layer {
             display-name = "FUN";
             bindings = <
-&trans  &LockScreen  &CloseWindow  &mmv MOVE_UP  &ScreenShoot  &ReviveWindow  &trans  &trans  &trans  &trans  &kp K_PLAY_PAUSE  &trans  &trans  &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &QuitApp  &trans  &kp K_PREVIOUS  &kp K_NEXT  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp K_VOLUME_DOWN  &kp K_VOLUME_UP  &trans  &trans  &trans  &mkp MCLK  &mkp LCLK  &mkp RCLK  &trans  &trans  &trans
+&LockScreen  &CloseWindow    &mmv MOVE_UP    &ScreenShoot     &ReviveWindow    &trans  &trans             &trans           &trans  &kp K_PLAY_PAUSE
+&trans       &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &QuitApp         &trans  &kp K_PREVIOUS     &kp K_NEXT       &trans  &trans
+&trans       &trans          &trans          &trans           &trans           &trans  &kp K_VOLUME_DOWN  &kp K_VOLUME_UP  &trans  &trans
+                             &mkp MCLK       &mkp LCLK        &mkp RCLK        &trans  &trans             &trans
             >;
         };
 
-        // | --- | --- | --- | BT clr all | BT clr | reset |   | reset | BT clr | BT clr all | BT0 | BT1 | --- |
-        // | --- | --- | --- | --- | bootload | OUT USB |   | OUT USB | bootload | --- | BT2 | BT3 | --- |
-        // | --- | --- | --- | --- | studio_unlock | OUT BLE |   | OUT BLE | studio_unlock | --- | --- | --- | --- |
-        //               | --- | --- | --- |   | --- | --- | --- |
+        // | BT1 | BT0 | BT clr all | BT clr | reset |   | BT0 | BT1 | BT2 | BT3 | BT4 |
+        // | BT4 | BT3 | --- | bootload | OUT USB |   | --- | --- | --- | --- | --- |
+        // | --- | --- | --- | studio_unlock | OUT BLE |   | OUT BLE | studio_unlock | reset | bootload | OUT USB |
+        //       | --- | --- | --- |   | --- | --- | --- |
 
         sys_layer {
             display-name = "SYS";
             bindings = <
-&trans  &bt BT_SEL 1  &bt BT_SEL 0  &bt BT_CLR_ALL  &bt BT_CLR  &sys_reset  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans  &trans  &bt BT_SEL 4  &bt BT_SEL 3  &trans  &bootloader  &out OUT_USB  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &studio_unlock  &out OUT_BLE  &out OUT_BLE  &studio_unlock  &sys_reset  &bootloader  &out OUT_USB  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&bt BT_SEL 1  &bt BT_SEL 0  &bt BT_CLR_ALL  &bt BT_CLR      &sys_reset    &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&bt BT_SEL 4  &bt BT_SEL 3  &trans          &bootloader     &out OUT_USB  &trans        &trans          &trans        &trans        &trans
+&trans        &trans        &trans          &studio_unlock  &out OUT_BLE  &out OUT_BLE  &studio_unlock  &sys_reset    &bootloader   &out OUT_USB
+                            &trans          &trans          &trans        &trans        &trans          &trans
             >;
         };
     };
