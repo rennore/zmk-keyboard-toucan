@@ -251,9 +251,9 @@
         fun_layer {
             display-name = "FUN";
             bindings = <
-&LockScreen  &CloseWindow    &mmv MOVE_UP    &ScreenShoot     &ReviveWindow    &trans  &trans             &trans           &trans  &kp K_PLAY_PAUSE
-&trans       &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &QuitApp         &trans  &kp K_PREVIOUS     &kp K_NEXT       &trans  &trans
-&trans       &trans          &trans          &trans           &trans           &trans  &kp K_VOLUME_DOWN  &kp K_VOLUME_UP  &trans  &trans
+&LockScreen  &CloseWindow    &mmv MOVE_UP    &ScreenShoot     &ReviveWindow    &trans  &trans             &trans           &trans  &kp C_PLAY_PAUSE
+&trans       &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &QuitApp         &trans  &kp C_PREVIOUS     &kp C_NEXT       &trans  &trans
+&trans       &trans          &trans          &trans           &trans           &trans  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &trans  &trans
                              &mkp MCLK       &mkp LCLK        &mkp RCLK        &trans  &trans             &trans
             >;
         };
